@@ -1,3 +1,48 @@
 [gd_scene format=3 uid="uid://dtkwukmyq87t6"]
 
-[node name="PlayerSelect" type="Node2D" unique_id=408965531]
+[ext_resource type="Script" uid="uid://bf8nofrmfw010" path="res://player_select.gd" id="1_yh01e"]
+[ext_resource type="Texture2D" uid="uid://brdeaaef242vi" path="res://art/dagon/dagon.png" id="2_c3nyd"]
+
+[node name="PlayerSelect" type="Control" unique_id=1361118305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yh01e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1705177431]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=788078850]
+layout_mode = 2
+text = "SELECT YOUR FIGHTER"
+horizontal_alignment = 1
+
+[node name="DagonPreview" type="TextureRect" parent="VBoxContainer" unique_id=2027421205]
+layout_mode = 2
+
+[node name="DagonName" type="Label" parent="VBoxContainer" unique_id=1395104311]
+layout_mode = 2
+text = "DAGON"
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer" unique_id=31075857]
+layout_mode = 2
+text = "CONFIRM"
+
+[node name="DagonPortrait" type="TextureRect" parent="." unique_id=404628857]
+layout_mode = 1
+offset_left = 66.0
+offset_top = -36.0
+offset_right = 152.0
+offset_bottom = 58.0
+texture = ExtResource("2_c3nyd")
+expand_mode = 1
+stretch_mode = 5

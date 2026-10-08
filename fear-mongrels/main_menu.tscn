@@ -21,6 +21,10 @@ bg_color = Color(0.13333334, 0.078431375, 0.13333334, 0.6862745)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe12f"]
 bg_color = Color(0.5126706, 0.35528442, 0.50856686, 0.54509807)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
 
@@ -60,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1019734980]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1019734980]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
@@ -71,7 +75,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Start"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=276542842]
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=276542842]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
@@ -82,7 +86,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1028685629]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1028685629]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
@@ -93,7 +97,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Credits"
 
-[node name="Button4" type="Button" parent="VBoxContainer" unique_id=518093945]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=518093945]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
@@ -103,6 +107,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Quit"
+
+[node name="QuitGame" type="ConfirmationDialog" parent="." unique_id=174501572]
+title = "Quit Game"
+size = Vector2i(300, 100)
+ok_button_text = "YES"
+dialog_text = "Are You Sure?"
+cancel_button_text = "NO"
 
 [node name="Label" type="Label" parent="." unique_id=640460112]
 layout_mode = 1
@@ -125,7 +136,8 @@ text = "NAME OF OUR GAME! TBD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="confirmed" from="QuitGame" to="." method="_on_quit_game_confirmed"]

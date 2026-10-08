@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://di7rlt6mmyn8w"]
+
+[ext_resource type="PackedScene" uid="uid://bof5f7edcy6jr" path="res://dagon.tscn" id="1_8ixd0"]
+[ext_resource type="PackedScene" uid="uid://c5l1tyrw6jmdx" path="res://temp_player2.tscn" id="2_noucm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ixd0"]
+size = Vector2(1917, 9.5)
+
+[node name="DagonTesting" type="Node2D" unique_id=200078986]
+
+[node name="Dagon" parent="." unique_id=727183561 instance=ExtResource("1_8ixd0")]
+position = Vector2(-399, 6)
+
+[node name="TempPlayer2" parent="." unique_id=605298712 instance=ExtResource("2_noucm")]
+position = Vector2(386, 25)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=656728665]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1476399076]
+position = Vector2(960, 1075)
+shape = SubResource("RectangleShape2D_8ixd0")

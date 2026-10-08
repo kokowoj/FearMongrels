@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://hxevjamube4a"]
+
+[ext_resource type="Script" uid="uid://b7d2qqukuou2c" path="res://settings.gd" id="1_x2hje"]
+
+[node name="settings" type="Control" unique_id=672206576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2hje")
+
+[node name="Panel" type="Panel" parent="." unique_id=1186981306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1958488712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1986216499]
+custom_minimum_size = Vector2(800, 700)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=768693454]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=227883769]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=636552056]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=231882234]
+layout_mode = 2
+text = "AUDIO"
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=808876263]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1915177021]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1373188611]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="MusicVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=528861379]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1454590129]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1876795673]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="SPXVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=151328611]
+layout_mode = 2
+
+[node name="SPXVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SPXVolumeRow" unique_id=119164884]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "SPX Volume"
+
+[node name="SPXVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SPXVolumeRow" unique_id=1664291111]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="MuteCheckBox" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=702754668]
+layout_mode = 2
+text = "Mute"
+
+[node name="DisplayLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=280337397]
+layout_mode = 2
+text = "DISPLAY"
+
+[node name="DisplayModeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2145133088]
+layout_mode = 2
+
+[node name="DisplayModeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DisplayModeRow" unique_id=665670916]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Display Mode"
+
+[node name="DisplayMode" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DisplayModeRow" unique_id=226362845]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless Windowed"
+popup/item_2/id = 2
+
+[node name="ResolutionRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1939587111]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1909214949]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1893621652]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "1280 x 720"
+popup/item_0/id = 0
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+
+[node name="ControlsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=4667835]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="SensitivityRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2095722767]
+layout_mode = 2
+
+[node name="SensitivityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow" unique_id=919216852]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Sensitivity"
+
+[node name="Sensitivity" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow" unique_id=1876082287]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="AccessibilityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=7578224]
+layout_mode = 2
+text = "ACCESSIBILITY"
+
+[node name="SubtitlesCheckBox" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1455125966]
+layout_mode = 2
+text = "Subtitles
+"
+
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=328510395]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "BACK"
