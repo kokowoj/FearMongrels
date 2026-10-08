@@ -38,9 +38,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Created By"
+horizontal_alignment = 1
 
 [node name="Names" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1165890836]
 layout_mode = 2
+text = "ToMbLiKe Productions"
+horizontal_alignment = 1
 
 [node name="Programming" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1444871345]
 layout_mode = 2
@@ -93,6 +96,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="ScrollContainer" unique_id=717828112]
 layout_mode = 2
