@@ -188,6 +188,8 @@ layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_8wily")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_glbon")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_xjifi")
+tick_count = 5
+ticks_on_borders = true
 
 [node name="MusicVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=528861379]
 layout_mode = 2
@@ -206,6 +208,8 @@ layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_ugo3u")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4o0ny")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_llrif")
+tick_count = 5
+ticks_on_borders = true
 
 [node name="SFXVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=151328611]
 layout_mode = 2
@@ -224,6 +228,8 @@ layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_71mqq")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3j6r5")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_3lj6o")
+tick_count = 5
+ticks_on_borders = true
 
 [node name="MuteCheckBox" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=702754668]
 layout_mode = 2
@@ -307,6 +313,8 @@ layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_cj1lu")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_6mhpt")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ohexs")
+tick_count = 5
+ticks_on_borders = true
 
 [node name="AccessibilityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=7578224]
 layout_mode = 2
