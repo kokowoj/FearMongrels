@@ -1,4 +1,3 @@
-
 extends Control
 
 @onready var dagon_portrait: TextureButton = $DagonPortrait
@@ -14,7 +13,6 @@ const HOVER_GREEN = Color("#65DF7C")
 const HOVER_SCALE = 1.07
 const HOVER_SPEED = 0.15
 
-# Same values as the working title screen.
 const BUTTON_GLOW_OPACITY = 0.90
 const GLOW_BLUR_RADIUS = 12
 const GLOW_PADDING_RATIO = 0.12
@@ -22,7 +20,6 @@ const GLOW_PADDING_RATIO = 0.12
 const BUTTON_IMAGE_WIDTH = 0.80
 const BUTTON_IMAGE_HEIGHT = 0.70
 
-# Dagon's glow is intentionally softer.
 const PORTRAIT_GLOW_OPACITY = 0.20
 
 var dagon_selected: bool = false
@@ -57,16 +54,12 @@ func _ready() -> void:
 	dagon_portrait.scale = Vector2.ONE
 	dagon_portrait.pivot_offset = dagon_portrait.size / 2.0
 
-	# Prepare the stone artwork exactly like the main menu.
 	_prepare_button_textures()
 
-	# Set up the character portrait.
 	_setup_dagon_portrait()
 
-	# Set up the stone Confirm button.
 	_setup_confirm_button()
 
-	# Set up menu sounds.
 	hover_sound = AudioStreamPlayer.new()
 	add_child(hover_sound)
 
@@ -75,7 +68,6 @@ func _ready() -> void:
 	if AudioServer.get_bus_index("SFX") != -1:
 		hover_sound.bus = "SFX"
 
-	# Connect Dagon portrait.
 	dagon_portrait.mouse_entered.connect(
 		_on_dagon_hovered
 	)
@@ -88,7 +80,6 @@ func _ready() -> void:
 		_on_dagon_selected
 	)
 
-	# Connect Confirm button.
 	confirm_button.mouse_entered.connect(
 		_on_confirm_hovered
 	)
@@ -102,10 +93,6 @@ func _ready() -> void:
 	)
 
 
-# --------------------------------------------------
-# STONE BUTTON TEXTURES
-# Same preparation method as main_menu.gd
-# --------------------------------------------------
 
 func _prepare_button_textures() -> void:
 	if button_frame_png == null:
@@ -176,15 +163,11 @@ func _prepare_button_textures() -> void:
 	glow_texture = ImageTexture.create_from_image(blurred)
 
 
-# --------------------------------------------------
-# CONFIRM BUTTON
-# --------------------------------------------------
 
 func _setup_confirm_button() -> void:
 	if artwork_texture == null or glow_texture == null:
 		return
 
-	# Remove Godot's default button backgrounds.
 	for state in [
 		"normal",
 		"hover",
@@ -198,7 +181,6 @@ func _setup_confirm_button() -> void:
 			StyleBoxEmpty.new()
 		)
 
-	# Match the title screen's text colors.
 	confirm_button.add_theme_color_override(
 		"font_hover_color",
 		HOVER_GREEN
@@ -214,7 +196,6 @@ func _setup_confirm_button() -> void:
 	confirm_button.clip_contents = false
 	confirm_button.icon = null
 
-	# Soft glow behind the stone artwork.
 	confirm_glow = TextureRect.new()
 	confirm_glow.name = "SoftGreenGlow"
 	confirm_glow.texture = glow_texture
@@ -233,7 +214,6 @@ func _setup_confirm_button() -> void:
 
 	confirm_button.add_child(confirm_glow)
 
-	# Actual stone artwork.
 	var artwork = TextureRect.new()
 	artwork.name = "ButtonArtwork"
 	artwork.texture = artwork_texture
@@ -245,7 +225,6 @@ func _setup_confirm_button() -> void:
 
 	confirm_button.add_child(artwork)
 
-	# Position both images identically.
 	_position_button_layers(
 		confirm_button,
 		confirm_glow,
@@ -294,9 +273,6 @@ func _position_button_layers(
 	button.pivot_offset = button.size / 2.0
 
 
-# --------------------------------------------------
-# DAGON PORTRAIT
-# --------------------------------------------------
 
 func _setup_dagon_portrait() -> void:
 	var portrait_texture = dagon_portrait.texture_normal
@@ -397,10 +373,6 @@ func _position_portrait_glow() -> void:
 	dagon_portrait.pivot_offset = dagon_portrait.size / 2.0
 
 
-# --------------------------------------------------
-# IMAGE BLUR
-# Same blur method as the main menu.
-# --------------------------------------------------
 
 func _blur_alpha(source: Image, radius: int) -> Image:
 	var width = source.get_width()
@@ -487,9 +459,6 @@ func _blur_alpha(source: Image, radius: int) -> Image:
 	return vertical
 
 
-# --------------------------------------------------
-# AUDIO
-# --------------------------------------------------
 
 func _play_hover_sound() -> void:
 	if hover_sound.stream != null:
@@ -512,9 +481,6 @@ func _play_select_sound() -> void:
 	player.play()
 
 
-# --------------------------------------------------
-# HOVER ANIMATION
-# --------------------------------------------------
 
 func _animate_button(
 	button: Control,
@@ -559,12 +525,11 @@ func _animate_button(
 	return tween
 
 
-# --------------------------------------------------
-# DAGON INTERACTIONS
-# --------------------------------------------------
 
 func _on_dagon_hovered() -> void:
 	_play_hover_sound()
+
+	dagon_splash.show()
 
 	if portrait_tween and portrait_tween.is_valid():
 		portrait_tween.kill()
@@ -581,6 +546,8 @@ func _on_dagon_hovered() -> void:
 func _on_dagon_unhovered() -> void:
 	if portrait_tween and portrait_tween.is_valid():
 		portrait_tween.kill()
+		
+		dagon_splash.hide()
 
 	portrait_tween = _animate_button(
 		dagon_portrait,
@@ -603,9 +570,6 @@ func _on_dagon_selected() -> void:
 		portrait_glow.modulate.a = PORTRAIT_GLOW_OPACITY
 
 
-# --------------------------------------------------
-# CONFIRM INTERACTIONS
-# --------------------------------------------------
 
 func _on_confirm_hovered() -> void:
 	_play_hover_sound()

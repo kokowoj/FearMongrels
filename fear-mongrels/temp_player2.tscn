@@ -165,15 +165,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxa32"]
 size = Vector2(183, 207)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jram4"]
+size = Vector2(140, 125)
+
 [node name="TempPlayer2" type="CharacterBody2D" unique_id=727183561]
 script = ExtResource("1_6abbs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=107237978]
-position = Vector2(1097.0001, 833)
+position = Vector2(-17.5, -102.5)
 scale = Vector2(0.35831955, 0.22281927)
 sprite_frames = SubResource("SpriteFrames_6abbs")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702920677]
-position = Vector2(1114.5, 935.5)
 shape = SubResource("RectangleShape2D_gxa32")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1433434973]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=899801119]
+position = Vector2(40, -45)
+shape = SubResource("RectangleShape2D_jram4")

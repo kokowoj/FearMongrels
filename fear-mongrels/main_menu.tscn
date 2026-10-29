@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2oena53ikeby" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://dh55tixmhwq85" path="res://art/backgroundtitle.png" id="2_jix8l"]
 [ext_resource type="Texture2D" uid="uid://uunwvxce455o" path="res://art/title/button.png" id="3_glbon"]
+[ext_resource type="FontFile" uid="uid://cjxh1mnvxyvra" path="res://fonts/DRAGON HUNTER.otf" id="3_nlkkf"]
 [ext_resource type="FontFile" uid="uid://c16jxkc48qu2c" path="res://fonts/Alice_in_Wonderland_3.ttf" id="4_glbon"]
 [ext_resource type="Texture2D" uid="uid://s235o2f0tyqc" path="res://art/title/tcoctsp.png" id="4_nlkkf"]
 
@@ -26,6 +27,10 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+
+[sub_resource type="Theme" id="Theme_glbon"]
+default_font = ExtResource("3_nlkkf")
+default_font_size = 16
 
 [sub_resource type="FontVariation" id="FontVariation_nlkkf"]
 base_font = ExtResource("4_glbon")
@@ -97,10 +102,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 
 [node name="QuitGame" type="ConfirmationDialog" parent="." unique_id=174501572]
-title = "Quit Game"
+oversampling_override = 1.0
+title = "QUIT GAME"
+initial_position = 2
 size = Vector2i(300, 100)
+theme = SubResource("Theme_glbon")
 ok_button_text = "YES"
-dialog_text = "Are You Sure?"
+dialog_text = "ARE YOU SURE?"
 cancel_button_text = "NO"
 
 [node name="GameTitle" type="TextureRect" parent="." unique_id=1404174286]
@@ -152,9 +160,6 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
 theme_override_fonts/font = SubResource("FontVariation_8qtwp")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "SETTINGS"
 icon = ExtResource("3_glbon")
