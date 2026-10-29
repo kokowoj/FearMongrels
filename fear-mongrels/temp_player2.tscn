@@ -163,7 +163,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxa32"]
-size = Vector2(528.5, 228)
+size = Vector2(183, 207)
 
 [node name="TempPlayer2" type="CharacterBody2D" unique_id=727183561]
 script = ExtResource("1_6abbs")
@@ -172,9 +172,8 @@ script = ExtResource("1_6abbs")
 position = Vector2(1097.0001, 833)
 scale = Vector2(0.35831955, 0.22281927)
 sprite_frames = SubResource("SpriteFrames_6abbs")
-animation = &"idle"
-frame_progress = 0.14999223
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702920677]
-position = Vector2(1069, 930)
+position = Vector2(1114.5, 935.5)
 shape = SubResource("RectangleShape2D_gxa32")

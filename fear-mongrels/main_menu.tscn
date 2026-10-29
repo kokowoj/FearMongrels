@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://citgmlvsbhs1c"]
 
-[ext_resource type="Texture2D" uid="uid://cpkoh5ymtg0n5" path="res://gbg.jpg" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://2oena53ikeby" path="res://main_menu.gd" id="1_7vrkn"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jram4"]
-texture = ExtResource("1_06t4h")
-modulate_color = Color(0.72255445, 0.72255445, 0.72255445, 1)
+[ext_resource type="Texture2D" uid="uid://dh55tixmhwq85" path="res://art/backgroundtitle.png" id="2_jix8l"]
+[ext_resource type="Texture2D" uid="uid://uunwvxce455o" path="res://art/title/button.png" id="3_glbon"]
+[ext_resource type="FontFile" uid="uid://c16jxkc48qu2c" path="res://fonts/Alice_in_Wonderland_3.ttf" id="4_glbon"]
+[ext_resource type="Texture2D" uid="uid://s235o2f0tyqc" path="res://art/title/tcoctsp.png" id="4_nlkkf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
 bg_color = Color(0.84313726, 0.73333335, 0.8392157, 0.38431373)
@@ -28,6 +27,18 @@ corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
 
+[sub_resource type="FontVariation" id="FontVariation_nlkkf"]
+base_font = ExtResource("4_glbon")
+variation_embolden = 0.5
+
+[sub_resource type="FontVariation" id="FontVariation_8qtwp"]
+base_font = ExtResource("4_glbon")
+variation_embolden = 0.5
+
+[sub_resource type="FontVariation" id="FontVariation_dy7ct"]
+base_font = ExtResource("4_glbon")
+variation_embolden = 0.5
+
 [node name="MainMenu" type="Control" unique_id=104975880]
 layout_mode = 3
 anchors_preset = 15
@@ -47,46 +58,35 @@ offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_jram4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1767695797]
+[node name="Background" type="TextureRect" parent="." unique_id=154382343]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -211.0
-offset_top = -138.0
-offset_right = 211.0
-offset_bottom = 189.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
+texture = ExtResource("2_jix8l")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1019734980]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 0.6)
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Start"
-
-[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=276542842]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 0.6)
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Settings"
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=322110481]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -170.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 70
+alignment = 1
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1028685629]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0.6)
@@ -95,18 +95,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Credits"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=518093945]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 0.6)
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Quit"
 
 [node name="QuitGame" type="ConfirmationDialog" parent="." unique_id=174501572]
 title = "Quit Game"
@@ -115,29 +103,93 @@ ok_button_text = "YES"
 dialog_text = "Are You Sure?"
 cancel_button_text = "NO"
 
-[node name="Label" type="Label" parent="." unique_id=640460112]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -102.5
-offset_top = -281.0
-offset_right = 122.0
-offset_bottom = -176.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.45882353, 0.45882353, 0.45882353, 0.75686276)
-theme_override_colors/font_shadow_color = Color(0.3019608, 0.13333334, 0.29803923, 0.93333334)
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 45
-text = "NAME OF OUR GAME! TBD"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="GameTitle" type="TextureRect" parent="." unique_id=1404174286]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("4_nlkkf")
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[node name="StartButton" type="Button" parent="." unique_id=1019734980]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -330.0
+offset_right = 600.0
+offset_bottom = -10.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.6)
+theme_override_fonts/font = SubResource("FontVariation_nlkkf")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "PLAY"
+icon = ExtResource("3_glbon")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="SettingsButton" type="Button" parent="." unique_id=276542842]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -325.0
+offset_right = 302.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.6)
+theme_override_fonts/font = SubResource("FontVariation_8qtwp")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "SETTINGS"
+icon = ExtResource("3_glbon")
+flat = true
+icon_alignment = 1
+
+[node name="QuitButton" type="Button" parent="." unique_id=518093945]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -563.0
+offset_top = -290.0
+offset_right = -51.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.6)
+theme_override_fonts/font = SubResource("FontVariation_dy7ct")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "QUIT"
+icon = ExtResource("3_glbon")
+flat = true
+icon_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="confirmed" from="QuitGame" to="." method="_on_quit_game_confirmed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]

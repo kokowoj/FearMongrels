@@ -1,6 +1,105 @@
 [gd_scene format=3 uid="uid://hxevjamube4a"]
 
+[ext_resource type="FontFile" uid="uid://c16jxkc48qu2c" path="res://fonts/Alice_in_Wonderland_3.ttf" id="1_nkug2"]
 [ext_resource type="Script" uid="uid://b7d2qqukuou2c" path="res://settings.gd" id="1_x2hje"]
+[ext_resource type="Texture2D" uid="uid://dh55tixmhwq85" path="res://art/backgroundtitle.png" id="3_gc0em"]
+[ext_resource type="Texture2D" uid="uid://uunwvxce455o" path="res://art/title/button.png" id="4_cj1lu"]
+
+[sub_resource type="Theme" id="Theme_x2hje"]
+default_font = ExtResource("1_nkug2")
+default_font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y43lv"]
+bg_color = Color(0.09019608, 0.15294118, 0.12156863, 0.003921569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4ii"]
+bg_color = Color(0.09803922, 0.12941177, 0.12156863, 0.42745098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15686275, 0.40784314, 0.22745098, 0.32941177)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.15686275, 0.40784314, 0.22745098, 0.32941177)
+shadow_size = 44
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wily"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.23137255, 0.20784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjifi"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.54901963, 0.9490196, 0.6156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugo3u"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.23137255, 0.20784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o0ny"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llrif"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.54901963, 0.9490196, 0.6156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71mqq"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.23137255, 0.20784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j6r5"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj6o"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.54901963, 0.9490196, 0.6156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj1lu"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.23137255, 0.20784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mhpt"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohexs"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.54901963, 0.9490196, 0.6156863, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_gc0em"]
+base_font = ExtResource("1_nkug2")
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ykye"]
+texture = ExtResource("4_cj1lu")
+
+[sub_resource type="FontVariation" id="FontVariation_cj1lu"]
+base_font = ExtResource("1_nkug2")
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gc0em"]
+texture = ExtResource("4_cj1lu")
 
 [node name="settings" type="Control" unique_id=672206576]
 layout_mode = 3
@@ -9,7 +108,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_x2hje")
 script = ExtResource("1_x2hje")
+
+[node name="Background" type="TextureRect" parent="." unique_id=256648060]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_gc0em")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="." unique_id=1186981306]
 layout_mode = 1
@@ -19,6 +127,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_y43lv")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1958488712]
 layout_mode = 1
@@ -29,8 +138,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1986216499]
-custom_minimum_size = Vector2(800, 700)
+custom_minimum_size = Vector2(1560, 860)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k4ii")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=768693454]
 layout_mode = 2
@@ -42,15 +152,23 @@ theme_override_constants/margin_bottom = 35
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=227883769]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 15
 
 [node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=636552056]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
 text = "SETTINGS"
 horizontal_alignment = 1
 
 [node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=231882234]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "AUDIO"
 
 [node name="MasterVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=808876263]
@@ -59,11 +177,17 @@ layout_mode = 2
 [node name="MasterVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1915177021]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
 text = "Master Volume"
 
-[node name="MasterVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1373188611]
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1373188611]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_8wily")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_xjifi")
 
 [node name="MusicVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=528861379]
 layout_mode = 2
@@ -71,30 +195,48 @@ layout_mode = 2
 [node name="MusicVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1454590129]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
 text = "Music Volume"
 
-[node name="MusicVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1876795673]
+[node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1876795673]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_ugo3u")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4o0ny")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_llrif")
 
-[node name="SPXVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=151328611]
+[node name="SFXVolumeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=151328611]
 layout_mode = 2
 
-[node name="SPXVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SPXVolumeRow" unique_id=119164884]
+[node name="SFXVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeRow" unique_id=119164884]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-text = "SPX Volume"
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
+text = "SFX Volume"
 
-[node name="SPXVolume" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SPXVolumeRow" unique_id=1664291111]
+[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeRow" unique_id=1664291111]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_71mqq")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3j6r5")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_3lj6o")
 
 [node name="MuteCheckBox" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=702754668]
 layout_mode = 2
-text = "Mute"
+theme_override_colors/font_color = Color(0.5411765, 0.53333336, 0.62352943, 0.4862745)
+theme_override_font_sizes/font_size = 20
+theme_override_colors/checkbox_checked_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+text = "MUTE"
 
 [node name="DisplayLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=280337397]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "DISPLAY"
 
 [node name="DisplayModeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2145133088]
@@ -103,9 +245,12 @@ layout_mode = 2
 [node name="DisplayModeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DisplayModeRow" unique_id=665670916]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
 text = "Display Mode"
 
-[node name="DisplayMode" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DisplayModeRow" unique_id=226362845]
+[node name="DisplayModeOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DisplayModeRow" unique_id=226362845]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 item_count = 3
@@ -122,9 +267,12 @@ layout_mode = 2
 [node name="ResolutionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1909214949]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
 text = "Resolution"
 
-[node name="Resolution" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1893621652]
+[node name="ResolutionOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1893621652]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 item_count = 3
@@ -137,6 +285,9 @@ popup/item_2/id = 2
 
 [node name="ControlsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=4667835]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "CONTROLS"
 
 [node name="SensitivityRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2095722767]
@@ -145,22 +296,52 @@ layout_mode = 2
 [node name="SensitivityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow" unique_id=919216852]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.8980392, 0.8980392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.13725491)
+theme_override_font_sizes/font_size = 24
 text = "Sensitivity"
 
-[node name="Sensitivity" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow" unique_id=1876082287]
+[node name="SensitivitySlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow" unique_id=1876082287]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_cj1lu")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_6mhpt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ohexs")
 
 [node name="AccessibilityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=7578224]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "ACCESSIBILITY"
 
 [node name="SubtitlesCheckBox" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1455125966]
 layout_mode = 2
-text = "Subtitles
-"
+theme_override_colors/font_color = Color(0.5411765, 0.53333336, 0.62352943, 0.4862745)
+theme_override_font_sizes/font_size = 20
+theme_override_colors/checkbox_checked_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+text = "SUBTITLES"
 
 [node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=328510395]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(260, 75)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 0.6)
+theme_override_colors/font_hover_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_fonts/font = SubResource("FontVariation_gc0em")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ykye")
 text = "BACK"
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=705470807]
+custom_minimum_size = Vector2(260, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 0.6)
+theme_override_colors/font_hover_color = Color(0.39607844, 0.8745098, 0.4862745, 1)
+theme_override_fonts/font = SubResource("FontVariation_cj1lu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_gc0em")
+text = "CREDITS"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

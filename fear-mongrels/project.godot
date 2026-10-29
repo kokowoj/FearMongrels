@@ -15,16 +15,20 @@ run/main_scene="uid://citgmlvsbhs1c"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://mfwa55jl6xu7"
+
 [autoload]
 
-AudioManager="*uid://dhb6245ibxch1"
+MenuAudio="*uid://evmsg5itx1dc"
+GameSettings="*uid://u48s8y02f8st"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [file_customization]
 

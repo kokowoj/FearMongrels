@@ -10,9 +10,11 @@ size = Vector2(1917, 9.5)
 
 [node name="Dagon" parent="." unique_id=727183561 instance=ExtResource("1_8ixd0")]
 position = Vector2(-399, 6)
+walk_offset_y = 300.0
 
 [node name="TempPlayer2" parent="." unique_id=605298712 instance=ExtResource("2_noucm")]
 position = Vector2(386, 25)
+walk_offset_y = 300.0
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=656728665]
 

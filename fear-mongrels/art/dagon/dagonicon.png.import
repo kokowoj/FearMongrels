@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpkoh5ymtg0n5"
-path="res://.godot/imported/gbg.jpg-5e2c6091e0fe9c7185f52414a3a18843.ctex"
+uid="uid://cjlo0gps0kkxb"
+path="res://.godot/imported/dagonicon.png-36e4c84ffc298e8752c9143b67fe2d34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gbg.jpg"
-dest_files=["res://.godot/imported/gbg.jpg-5e2c6091e0fe9c7185f52414a3a18843.ctex"]
+source_file="res://art/dagon/dagonicon.png"
+dest_files=["res://.godot/imported/dagonicon.png-36e4c84ffc298e8752c9143b67fe2d34.ctex"]
 
 [params]
 

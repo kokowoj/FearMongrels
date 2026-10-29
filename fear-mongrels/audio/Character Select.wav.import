@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uujd8bvkskdh"
+path="res://.godot/imported/Character Select.wav-5aea8d16af55dac816f2b174ecc31ebc.sample"
+
+[deps]
+
+source_file="res://audio/Character Select.wav"
+dest_files=["res://.godot/imported/Character Select.wav-5aea8d16af55dac816f2b174ecc31ebc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,6 +2,42 @@
 
 [ext_resource type="Script" uid="uid://bf8nofrmfw010" path="res://player_select.gd" id="1_yh01e"]
 [ext_resource type="Texture2D" uid="uid://brdeaaef242vi" path="res://art/dagon/dagon.png" id="2_c3nyd"]
+[ext_resource type="FontFile" uid="uid://cjxh1mnvxyvra" path="res://fonts/DRAGON HUNTER.otf" id="2_ddm18"]
+[ext_resource type="Texture2D" uid="uid://cjlo0gps0kkxb" path="res://art/dagon/dagonicon.png" id="3_cfwvh"]
+[ext_resource type="FontFile" uid="uid://c16jxkc48qu2c" path="res://fonts/Alice_in_Wonderland_3.ttf" id="5_331r0"]
+[ext_resource type="Texture2D" uid="uid://uunwvxce455o" path="res://art/title/button.png" id="6_c3g8w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfwvh"]
+bg_color = Color(0.10980392, 0.1882353, 0.16862746, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.27058825, 0.40784314, 0.36078432, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.59607846)
+shadow_size = 12
+
+[sub_resource type="FontVariation" id="FontVariation_ik4si"]
+base_font = ExtResource("2_ddm18")
+spacing_glyph = 5
+spacing_space = 10
+
+[sub_resource type="FontVariation" id="FontVariation_jram4"]
+base_font = ExtResource("2_ddm18")
+
+[sub_resource type="FontVariation" id="FontVariation_331r0"]
+base_font = SubResource("FontVariation_jram4")
+
+[sub_resource type="FontVariation" id="FontVariation_oklmx"]
+base_font = ExtResource("5_331r0")
+variation_embolden = 0.5
+
+[sub_resource type="FontVariation" id="FontVariation_c3g8w"]
+base_font = ExtResource("5_331r0")
 
 [node name="PlayerSelect" type="Control" unique_id=1361118305]
 layout_mode = 3
@@ -12,37 +48,102 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yh01e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1705177431]
-custom_minimum_size = Vector2(500, 300)
+[node name="Background" type="ColorRect" parent="." unique_id=880285465]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0.078431375, 0.15294118, 0.13333334, 1)
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=788078850]
-layout_mode = 2
+[node name="CharacterPanel" type="Panel" parent="." unique_id=878932536]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 170.0
+offset_right = 960.0
+offset_bottom = 820.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cfwvh")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=788078850]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 35.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9137255, 0.8901961, 0.8352941, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.13489926, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ik4si")
+theme_override_font_sizes/font_size = 54
 text = "SELECT YOUR FIGHTER"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DagonPreview" type="TextureRect" parent="VBoxContainer" unique_id=2027421205]
-layout_mode = 2
-
-[node name="DagonName" type="Label" parent="VBoxContainer" unique_id=1395104311]
-layout_mode = 2
-text = "DAGON"
-
-[node name="ConfirmButton" type="Button" parent="VBoxContainer" unique_id=31075857]
-layout_mode = 2
-text = "CONFIRM"
-
-[node name="DagonPortrait" type="TextureRect" parent="." unique_id=404628857]
+[node name="DagonSplash" type="TextureRect" parent="." unique_id=404628857]
+visible = false
 layout_mode = 1
-offset_left = 66.0
-offset_top = -36.0
-offset_right = 152.0
-offset_bottom = 58.0
-texture = ExtResource("2_c3nyd")
+offset_left = 80.0
+offset_top = 190.0
+offset_right = 930.0
+offset_bottom = 760.0
+mouse_filter = 2
+texture = ExtResource("3_cfwvh")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="DagonPortrait" type="TextureButton" parent="." unique_id=97088037]
+layout_mode = 1
+offset_left = 1260.0
+offset_top = 520.0
+offset_right = 1440.0
+offset_bottom = 700.0
+texture_normal = ExtResource("2_c3nyd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DagonName" type="Label" parent="." unique_id=1395104311]
+layout_mode = 1
+offset_left = 1170.0
+offset_top = 400.0
+offset_right = 1530.0
+offset_bottom = 490.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.7254902, 0.84313726, 0.74509805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_331r0")
+theme_override_font_sizes/font_size = 64
+text = "DAGON"
+horizontal_alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="." unique_id=1648096692]
+layout_mode = 0
+offset_left = 1294.0
+offset_top = 484.0
+offset_right = 1402.0
+offset_bottom = 514.0
+theme_override_colors/font_color = Color(0.6627451, 0.7882353, 0.69411767, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.99215686)
+theme_override_fonts/font = SubResource("FontVariation_oklmx")
+theme_override_font_sizes/font_size = 28
+text = "PLAYER 1"
+
+[node name="ConfirmButton" type="Button" parent="." unique_id=31075857]
+layout_mode = 1
+offset_left = 1150.0
+offset_top = 805.0
+offset_right = 1670.0
+offset_bottom = 970.0
+theme_override_colors/font_color = Color(0.85490197, 0.85490197, 0.8509804, 1)
+theme_override_colors/font_pressed_color = Color(0.39607844, 0.84313726, 0.5137255, 1)
+theme_override_colors/font_hover_color = Color(0.39607844, 0.84313726, 0.5137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_c3g8w")
+theme_override_font_sizes/font_size = 45
+text = "CONFIRM"
+icon = ExtResource("6_c3g8w")
+flat = true
+icon_alignment = 1

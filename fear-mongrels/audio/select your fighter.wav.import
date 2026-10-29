@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cjo7hcujf2yje"
-path="res://.godot/imported/select your fighter.wav-0bbe209dad2e5a3fa0ad2ec1fed7f6e0.sample"
+path="res://.godot/imported/select your fighter.wav-eafef073fecb6bb8d816743571e2540d.sample"
 
 [deps]
 
-source_file="res://select your fighter.wav"
-dest_files=["res://.godot/imported/select your fighter.wav-0bbe209dad2e5a3fa0ad2ec1fed7f6e0.sample"]
+source_file="res://audio/select your fighter.wav"
+dest_files=["res://.godot/imported/select your fighter.wav-eafef073fecb6bb8d816743571e2540d.sample"]
 
 [params]
 

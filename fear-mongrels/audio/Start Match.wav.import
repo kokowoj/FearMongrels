@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://df8tpj5218y2f"
-path="res://.godot/imported/training theme.wav-2b493695be8bb382152c44fc118e06e9.sample"
+uid="uid://dd63f747ye5xn"
+path="res://.godot/imported/Start Match.wav-9185bee7a09e974e815113b159a953de.sample"
 
 [deps]
 
-source_file="res://training theme.wav"
-dest_files=["res://.godot/imported/training theme.wav-2b493695be8bb382152c44fc118e06e9.sample"]
+source_file="res://audio/Start Match.wav"
+dest_files=["res://.godot/imported/Start Match.wav-9185bee7a09e974e815113b159a953de.sample"]
 
 [params]
 

@@ -3,13 +3,27 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 @export var jump_velocity: float = -550.0
 
+# Adjust walking height in the Inspector.
+@export var walk_offset_y: float = 0.0
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var gravity: float = 980.0
 var is_attacking: bool = false
 
+var original_sprite_offset: Vector2
+
+
 func _ready() -> void:
-	animated_sprite.animation_finished.connect(_on_animation_finished)
+	# Save the sprite's original offset.
+	original_sprite_offset = animated_sprite.offset
+
+	animated_sprite.animation_finished.connect(
+		_on_animation_finished
+	)
+
+	_update_sprite_offset()
+
 
 func _physics_process(delta: float) -> void:
 	# Gravity
@@ -47,11 +61,26 @@ func _physics_process(delta: float) -> void:
 		else:
 			change_animation("idle")
 
+	# Adjust only the visible artwork.
+	_update_sprite_offset()
+
 	move_and_slide()
+
 
 func change_animation(new_animation: String) -> void:
 	if animated_sprite.animation != new_animation:
 		animated_sprite.play(new_animation)
+
+
+func _update_sprite_offset() -> void:
+	if animated_sprite.animation == "walk":
+		animated_sprite.offset = original_sprite_offset + Vector2(
+			0.0,
+			walk_offset_y
+		)
+	else:
+		animated_sprite.offset = original_sprite_offset
+
 
 func _on_animation_finished() -> void:
 	if animated_sprite.animation == "light_punch" or animated_sprite.animation == "light_kick":

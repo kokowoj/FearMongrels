@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dlhc2lbou37dn"
-path="res://.godot/imported/Cathulhu - victory theme.wav-7eaec92e2a3835a70f0fca0b3327d9df.sample"
+path="res://.godot/imported/Cathulhu - victory theme.wav-ca622a7b184b64df7cd3db9ff59ffa85.sample"
 
 [deps]
 
-source_file="res://Cathulhu - victory theme.wav"
-dest_files=["res://.godot/imported/Cathulhu - victory theme.wav-7eaec92e2a3835a70f0fca0b3327d9df.sample"]
+source_file="res://audio/Cathulhu - victory theme.wav"
+dest_files=["res://.godot/imported/Cathulhu - victory theme.wav-ca622a7b184b64df7cd3db9ff59ffa85.sample"]
 
 [params]
 

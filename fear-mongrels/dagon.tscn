@@ -163,17 +163,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxa32"]
-size = Vector2(497, 212)
+size = Vector2(170, 180)
 
 [node name="Dagon" type="CharacterBody2D" unique_id=727183561]
 script = ExtResource("1_5eqsq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=107237978]
-position = Vector2(1145, 886.5)
+position = Vector2(1107, 965.00006)
 scale = Vector2(0.32320446, 0.19060779)
 sprite_frames = SubResource("SpriteFrames_jram4")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702920677]
-position = Vector2(1153, 887)
+position = Vector2(1120, 1051)
 shape = SubResource("RectangleShape2D_gxa32")
