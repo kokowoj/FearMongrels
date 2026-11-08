@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var walk_offset_y: float = 0.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var SFX_Punch = $SFX_Punch
+@onready var SFX_Kick = $SFX_Kick
 
 var gravity: float = 980.0
 var is_attacking: bool = false
@@ -46,11 +48,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("punch") and not is_attacking:
 		is_attacking = true
 		animated_sprite.play("light_punch")
+		SFX_Punch.play()
 
 	# Light kick
 	elif Input.is_action_just_pressed("kick") and not is_attacking:
 		is_attacking = true
 		animated_sprite.play("light_kick")
+		SFX_Kick.play()
 
 	# Normal animations
 	if not is_attacking:
