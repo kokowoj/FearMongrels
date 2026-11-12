@@ -23,6 +23,7 @@ const BUTTON_IMAGE_HEIGHT = 0.70
 const PORTRAIT_GLOW_OPACITY = 0.20
 
 var dagon_selected: bool = false
+var match_starting: bool = false
 
 var artwork_texture: Texture2D
 var glow_texture: Texture2D
@@ -46,6 +47,9 @@ var hover_stream: AudioStream = preload(
 
 
 func _ready() -> void:
+	# Play the character selection announcement.
+	AudioManager.play_select_fighter()
+
 	dagon_splash.hide()
 	dagon_name.hide()
 
@@ -91,7 +95,6 @@ func _ready() -> void:
 	confirm_button.pressed.connect(
 		_on_confirm_pressed
 	)
-
 
 
 func _prepare_button_textures() -> void:
@@ -161,7 +164,6 @@ func _prepare_button_textures() -> void:
 	)
 
 	glow_texture = ImageTexture.create_from_image(blurred)
-
 
 
 func _setup_confirm_button() -> void:
@@ -273,7 +275,6 @@ func _position_button_layers(
 	button.pivot_offset = button.size / 2.0
 
 
-
 func _setup_dagon_portrait() -> void:
 	var portrait_texture = dagon_portrait.texture_normal
 
@@ -373,7 +374,6 @@ func _position_portrait_glow() -> void:
 	dagon_portrait.pivot_offset = dagon_portrait.size / 2.0
 
 
-
 func _blur_alpha(source: Image, radius: int) -> Image:
 	var width = source.get_width()
 	var height = source.get_height()
@@ -459,7 +459,6 @@ func _blur_alpha(source: Image, radius: int) -> Image:
 	return vertical
 
 
-
 func _play_hover_sound() -> void:
 	if hover_sound.stream != null:
 		hover_sound.play()
@@ -479,7 +478,6 @@ func _play_select_sound() -> void:
 
 	player.finished.connect(player.queue_free)
 	player.play()
-
 
 
 func _animate_button(
@@ -525,7 +523,6 @@ func _animate_button(
 	return tween
 
 
-
 func _on_dagon_hovered() -> void:
 	_play_hover_sound()
 
@@ -546,7 +543,8 @@ func _on_dagon_hovered() -> void:
 func _on_dagon_unhovered() -> void:
 	if portrait_tween and portrait_tween.is_valid():
 		portrait_tween.kill()
-		
+
+	if not dagon_selected:
 		dagon_splash.hide()
 
 	portrait_tween = _animate_button(
@@ -570,8 +568,10 @@ func _on_dagon_selected() -> void:
 		portrait_glow.modulate.a = PORTRAIT_GLOW_OPACITY
 
 
-
 func _on_confirm_hovered() -> void:
+	if match_starting:
+		return
+
 	_play_hover_sound()
 
 	if confirm_tween and confirm_tween.is_valid():
@@ -600,8 +600,18 @@ func _on_confirm_unhovered() -> void:
 
 
 func _on_confirm_pressed() -> void:
+	if match_starting:
+		return
+
+	match_starting = true
+	confirm_button.disabled = true
+
 	_play_select_sound()
 
+	# Play the Start Match announcement fully
+	await AudioManager.play_start_match()
+
+	# Enter the fighting arena
 	get_tree().change_scene_to_file(
 		"res://dagon_testing.tscn"
 	)

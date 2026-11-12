@@ -1,4 +1,3 @@
-
 extends Node2D
 
 # Blue/Green Dagon = Player 1
@@ -51,7 +50,7 @@ var player_2_flip: bool
 
 
 func _ready() -> void:
-	# Remember starting positions.
+	# Remember starting positions
 	player_1_start = player_1.global_position
 	player_2_start = player_2.global_position
 
@@ -63,14 +62,14 @@ func _ready() -> void:
 		"AnimatedSprite2D"
 	).flip_h
 
-	# Configure health bars.
+	# Configure health bars
 	player_1_health_bar.max_value = player_1.max_health
 	player_2_health_bar.max_value = player_2.max_health
 
 	player_1_health_bar.value = player_1.health
 	player_2_health_bar.value = player_2.health
 
-	# Connect health signals.
+	# Connect health signals
 	player_1.health_changed.connect(
 		_on_player_1_health_changed
 	)
@@ -79,7 +78,7 @@ func _ready() -> void:
 		_on_player_2_health_changed
 	)
 
-	# Connect knockout signals.
+	# Connect knockout signals
 	player_1.defeated.connect(
 		_on_player_1_defeated
 	)
@@ -88,14 +87,14 @@ func _ready() -> void:
 		_on_player_2_defeated
 	)
 
-	# Hide announcements initially.
+	# Hide announcements initially
 	announcement.visible = false
 	announcement_background.visible = false
 	status_label.visible = false
 
 	_update_timer_display()
 
-	# Start the first round.
+	# Start the first round
 	await _start_round()
 
 
@@ -120,15 +119,15 @@ func _set_fighters_enabled(enabled: bool) -> void:
 
 
 func _reset_fighters() -> void:
-	# Return fighters to starting positions.
+	# Return fighters to starting positions
 	player_1.global_position = player_1_start
 	player_2.global_position = player_2_start
 
-	# Restore health and animations.
+	# Restore health and animations
 	player_1.reset_health()
 	player_2.reset_health()
 
-	# Restore original facing directions.
+	# Restore original facing directions
 	player_1.get_node(
 		"AnimatedSprite2D"
 	).flip_h = player_1_flip
@@ -150,12 +149,18 @@ func _start_round() -> void:
 	status_label.text = "ROUND " + str(round_number)
 	status_label.visible = true
 
-	# Show the fullscreen starting announcement.
+	# Show the fullscreen starting announcement
 	await _play_announcement("game_start")
 
 	status_label.visible = false
 
-	# Begin fighting.
+	# Start music without waiting for it to finish
+	if round_number == 1:
+		AudioManager.play_dagon_intro()
+	else:
+		AudioManager.play_fight_theme()
+
+	# Enable fighters immediately
 	_set_fighters_enabled(true)
 	round_active = true
 
@@ -163,19 +168,19 @@ func _start_round() -> void:
 
 
 func _play_announcement(animation_name: String) -> void:
-	# Prepare the animation.
+	# Prepare the animation
 	announcement.animation = animation_name
 	announcement.frame = 0
 
-	# Get screen dimensions.
+	# Get screen dimensions
 	var screen_size: Vector2 = get_viewport_rect().size
 
-	# Make the black background fill the screen.
+	# Make the black background fill the screen
 	announcement_background.set_anchors_and_offsets_preset(
 		Control.PRESET_FULL_RECT
 	)
 
-	# Get the size of an announcement frame.
+	# Get the size of an announcement frame
 	var sprite_frames: SpriteFrames = announcement.sprite_frames
 	var frame_texture: Texture2D = sprite_frames.get_frame_texture(
 		animation_name, 0
@@ -189,7 +194,7 @@ func _play_announcement(animation_name: String) -> void:
 
 	var frame_size: Vector2 = frame_texture.get_size()
 
-	# Scale proportionally to fit within the screen.
+	# Scale proportionally to fit within the screen
 	var scale_factor: float = minf(
 		screen_size.x / frame_size.x,
 		screen_size.y / frame_size.y
@@ -197,20 +202,20 @@ func _play_announcement(animation_name: String) -> void:
 
 	announcement.scale = Vector2.ONE * scale_factor
 
-	# Center the animation.
+	# Center the animation
 	announcement.centered = true
 	announcement.position = screen_size / 2.0
 
-	# Cover the arena with black.
+	# Cover the arena with black
 	announcement_background.visible = true
 
-	# Display the announcement.
+	# Display the announcement
 	announcement.visible = true
 	announcement.play(animation_name)
 
 	await announcement.animation_finished
 
-	# Reveal the fighting arena again.
+	# Reveal the fighting arena again
 	announcement.visible = false
 	announcement_background.visible = false
 
@@ -227,7 +232,7 @@ func _on_player_1_defeated() -> void:
 	if not round_active:
 		return
 
-	# Player 2 wins the round.
+	# Player 2 wins the round
 	_finish_round(2)
 
 
@@ -235,7 +240,7 @@ func _on_player_2_defeated() -> void:
 	if not round_active:
 		return
 
-	# Player 1 wins the round.
+	# Player 1 wins the round
 	_finish_round(1)
 
 
@@ -250,7 +255,7 @@ func _handle_timeout() -> void:
 		_finish_round(2)
 
 	else:
-		# Replay a tied round.
+		# Replay a tied round
 		_finish_round(0)
 
 
@@ -260,6 +265,9 @@ func _finish_round(winner: int) -> void:
 
 	round_active = false
 	_set_fighters_enabled(false)
+
+	# Stop music when the round ends
+	AudioManager.stop_music()
 
 	call_deferred("_resolve_round", winner)
 
@@ -278,10 +286,10 @@ func _resolve_round(winner: int) -> void:
 
 	status_label.visible = true
 
-	# Fullscreen round announcement.
+	# Fullscreen round announcement
 	await _play_announcement("round_finish")
 
-	# Check for match victory.
+	# Check for match victory
 	if player_1_wins >= WINS_NEEDED:
 		await _finish_match(1)
 		return
@@ -290,7 +298,7 @@ func _resolve_round(winner: int) -> void:
 		await _finish_match(2)
 		return
 
-	# Continue to the next round.
+	# Continue to the next round
 	if winner != 0:
 		round_number += 1
 
@@ -303,8 +311,11 @@ func _finish_match(winner: int) -> void:
 
 	_set_fighters_enabled(false)
 
-	# Fullscreen game finish announcement.
+	# Fullscreen game finish announcement
 	await _play_announcement("game_finish")
+
+	# Play victory music once
+	AudioManager.play_victory_theme()
 
 	if winner == 1:
 		status_label.text = \
@@ -322,8 +333,9 @@ func _input(event: InputEvent) -> void:
 	if not match_over:
 		return
 
-	# Restart the match with R.
+	# Restart the match with R
 	if event is InputEventKey:
 		if event.pressed and not event.echo:
 			if event.keycode == KEY_R:
+				AudioManager.stop_music()
 				get_tree().reload_current_scene()

@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://mfwa55jl6xu7"
 
 MenuAudio="*uid://evmsg5itx1dc"
 GameSettings="*uid://u48s8y02f8st"
+AudioManager="*uid://dhb6245ibxch1"
 
 [display]
 

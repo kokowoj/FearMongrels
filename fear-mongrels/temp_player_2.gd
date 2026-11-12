@@ -6,17 +6,28 @@ signal defeated
 @export var speed: float = 200.0
 @export var jump_velocity: float = -550.0
 
-# Keep Blue Dagon's working sprite positions.
+# Keep Blue Dagon's working sprite positions
 @export var idle_position_y: float = -145.0
 @export var walk_position_y: float = -145.0
 
-# Combat settings.
+# Combat settings
 @export var max_health: int = 1000
 @export var punch_damage: int = 75
 @export var kick_damage: int = 100
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
+
+# Attack sound files
+const PUNCH_SOUND: AudioStream = preload(
+	"res://audio/Dagon - Light Punch-2.wav"
+)
+
+const KICK_SOUND: AudioStream = preload(
+	"res://audio/Dagon - Light Kick-2.wav"
+)
+
+var attack_sound: AudioStreamPlayer
 
 var gravity: float = 980.0
 var is_attacking: bool = false
@@ -31,6 +42,14 @@ func _ready() -> void:
 	health = max_health
 	hitbox_distance = absf(hitbox.position.x)
 
+	# Create audio player for attacks
+	attack_sound = AudioStreamPlayer.new()
+	attack_sound.name = "AttackSound"
+	add_child(attack_sound)
+
+	if AudioServer.get_bus_index("SFX") != -1:
+		attack_sound.bus = "SFX"
+
 	animated_sprite.animation_finished.connect(
 		_on_animation_finished
 	)
@@ -43,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Stop player controls when health reaches zero.
+	# Stop player controls when health reaches zero
 	if health <= 0:
 		velocity.x = 0.0
 		is_attacking = false
@@ -52,32 +71,32 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Player 1 movement.
+	# Player 1 movement
 	var direction := Input.get_axis("p2_left", "p2_right")
 	velocity.x = direction * speed
 
-	# Face the movement direction.
+	# Face the movement direction
 	if direction != 0:
 		animated_sprite.flip_h = direction < 0
 
 	_update_hitbox_direction()
 
-	# Jump.
+	# Jump
 	if Input.is_action_just_pressed("p2_jump") \
 	and is_on_floor() and not is_attacking:
 		velocity.y = jump_velocity
 
-	# Punch.
+	# Punch
 	if Input.is_action_just_pressed("p2_light_punch") \
 	and not is_attacking:
 		_start_attack("light_punch", punch_damage)
 
-	# Kick.
+	# Kick
 	elif Input.is_action_just_pressed("p2_light_kick") \
 	and not is_attacking:
 		_start_attack("light_kick", kick_damage)
 
-	# Normal movement animations.
+	# Normal movement animations
 	if not is_attacking:
 		if not is_on_floor():
 			change_animation("jump")
@@ -90,7 +109,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Check for damage during active attack frames.
+	# Check for damage during active attack frames
 	if is_attacking:
 		_check_attack_hit()
 
@@ -102,11 +121,32 @@ func _start_attack(animation_name: String, damage: int) -> void:
 
 	animated_sprite.play(animation_name)
 
+	# Play attack sound
+	_play_attack_sound(animation_name)
+
+
+func _play_attack_sound(animation_name: String) -> void:
+	if attack_sound == null:
+		return
+
+	match animation_name:
+		"light_punch":
+			attack_sound.stream = PUNCH_SOUND
+
+		"light_kick":
+			attack_sound.stream = KICK_SOUND
+
+		_:
+			return
+
+	attack_sound.play()
+
 
 func _check_attack_hit() -> void:
 	if attack_has_hit:
 		return
 
+	# Frames 2 and 3 are active attack frames
 	if animated_sprite.frame < 2 or animated_sprite.frame > 3:
 		return
 
@@ -164,6 +204,7 @@ func _update_sprite_position() -> void:
 	match animated_sprite.animation:
 		"walk":
 			animated_sprite.position.y = walk_position_y
+
 		_:
 			animated_sprite.position.y = idle_position_y
 
