@@ -34,13 +34,8 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://art/": "pink",
+"res://art/arena/": "purple",
 "res://art/dagon/": "green",
-"res://art/dagon/dagonIdle/": "green",
-"res://art/dagon/dagonJump/": "green",
-"res://art/dagon/dagonLightKick/": "green",
-"res://art/dagon/dagonLightPunch/": "green",
-"res://art/dagon/dagonWalk/": "green",
-"res://art/temp/": "blue",
 "res://audio/": "purple"
 }
 
