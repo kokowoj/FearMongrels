@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# Player 2 movement
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("p1_left", "p1_right")
 	velocity.x = direction * speed
 
 	# Face the movement direction
@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	_update_hitbox_direction()
 
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") \
+	if Input.is_action_just_pressed("p1_jump") \
 	and is_on_floor() and not is_attacking:
 		velocity.y = jump_velocity
 
